@@ -4,8 +4,8 @@ import Image from 'next/image'
 import { FC } from 'react'
 
 interface IUserAvatar {
-  name: string
-  image: string
+  name?: string | null
+  image?: string | null
   className?: string
 }
 
@@ -15,7 +15,7 @@ const UserAvatar: FC<IUserAvatar> = ({ name, image, className }) => {
       {image && (
         <Image
           src={image}
-          alt={name}
+          alt={name || 'User name'}
           width={40}
           height={40}
           className="rounded-full"
