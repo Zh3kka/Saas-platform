@@ -8,13 +8,13 @@ function ChatListRow({ chatId }: { chatId: string }) {
     limitedSortedMessagesRef(chatId)
   )
 
-  function prettyUUID(n=4) {
-    return chatId.substring(0,n)
+  function prettyUUID(n = 4) {
+    return chatId.substring(0, n)
   }
 
-  const row = (message: Message) => (
+  // const row = (message: Message) => (
 
-  )
+  // )
 
   return (
     <div>
@@ -28,9 +28,9 @@ function ChatListRow({ chatId }: { chatId: string }) {
         </div>
       )}
 
-      {messages?.length === 0 && !loading && row()}
+      {/* {messages?.length === 0 && !loading && row()} */}
 
-      {messages?.map((message) => row(message))}
+      {/* {messages?.map((message) => row(message))} */}
     </div>
   )
 }
