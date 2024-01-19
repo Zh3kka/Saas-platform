@@ -37,6 +37,27 @@ function CreateChatButton({ isLarge }: { isLarge: boolean }) {
       chatId: chatId,
       image: session.user.image || '',
     })
+      .then(() => {
+        toast({
+          title: 'Chat created!',
+          description: 'You are now a member of this chat.',
+          className: 'bg-green-600 text-white',
+          duration: 2000,
+        })
+        router.push(`/chat/${chatId}`)
+      })
+      .catch((error) => {
+        console.error(error)
+        toast({
+          title: 'Failed to create chat!',
+          description: 'Please try again.',
+          duration: 2000,
+          variant: 'destructive',
+        })
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   }
 
   if (isLarge)
