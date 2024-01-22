@@ -1,6 +1,6 @@
 import { db } from "@/firebase";
 import { LanguagesSupported } from "@/store/store";
-import { DocumentData, FirestoreDataConverter, QueryDocumentSnapshot, SnapshotOptions, collection, doc, limit, orderBy, query, where } from "firebase/firestore";
+import { DocumentData, FirestoreDataConverter, QueryDocumentSnapshot, SnapshotOptions, collection, limit, orderBy, query } from "firebase/firestore";
 
 export interface User {
     id: string;

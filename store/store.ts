@@ -24,5 +24,5 @@ interface LanguageState {
 export const useLanguageStore = create<LanguageState>((set, get) => ({
     language: 'en',
     setLanguage: (language: LanguagesSupported) => set({ language }),
-    getLanguages: () => { return (Object.keys(LanguagesSupportedMap).slice(0, 2) as LanguagesSupported[]) },
+    getLanguages: () => { return (Object.keys(LanguagesSupportedMap) as LanguagesSupported[]) },
 }))

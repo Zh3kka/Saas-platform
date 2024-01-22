@@ -5,10 +5,12 @@ import { useCollectionData } from 'react-firebase-hooks/firestore'
 import UserAvatar from './UserAvatar'
 import { useRouter } from 'next/navigation'
 import { useSession } from 'next-auth/react'
+import { useLanguageStore } from '@/store/store'
 
 function ChatListRow({ chatId }: { chatId: string }) {
   const router = useRouter()
   const { data: session } = useSession()
+  const language = useLanguageStore((state) => state.language)
   const [messages, loading, error] = useCollectionData<Message>(
     limitedSortedMessagesRef(chatId)
   )
@@ -33,8 +35,8 @@ function ChatListRow({ chatId }: { chatId: string }) {
           {message &&
             [message?.user.name || session?.user.name].toString().split(' ')[0]}
         </p>
-        <p className="text-gray-400 text-right">
-          {/* {message?.translated.['en'] || 'Get the conversation started...'} */}
+        <p className="text-gray-400 text-left">
+          {message?.translated?.[language] || 'Get started chat'}
         </p>
       </div>
       <div className="text-xs text-gray-400 text-right">
