@@ -1,8 +1,8 @@
 import { create } from 'zustand'
 
-export type LanguageSupport = | 'en' | 'de' | 'fr' | 'es' | 'hi' | 'ja' | 'la' | 'ru' | 'zh' | 'ar'
+export type LanguagesSupported = 'en' | 'de' | 'fr' | 'es' | 'hi' | 'ja' | 'la' | 'ru' | 'zh' | 'ar'
 
-export const LanguagesSupportedMap: Record<LanguageSupport, string> = {
+export const LanguagesSupportedMap: Record<LanguagesSupported, string> = {
     en: 'English',
     de: 'German',
     fr: 'French',
@@ -15,3 +15,14 @@ export const LanguagesSupportedMap: Record<LanguageSupport, string> = {
     ar: 'Arabic'
 }
 
+interface LanguageState {
+    language: LanguagesSupported
+    setLanguage: (language: LanguagesSupported) => void
+    getLanguages: () => LanguagesSupported[]
+}
+
+export const useLanguageStore = create<LanguageState>((set, get) => ({
+    language: 'en',
+    setLanguage: (language: LanguagesSupported) => set({ language }),
+    getLanguages: () => { return (Object.keys(LanguagesSupportedMap).slice(0, 2) as LanguagesSupported[]) },
+}))

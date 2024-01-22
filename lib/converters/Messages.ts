@@ -1,5 +1,5 @@
 import { db } from "@/firebase";
-import { LanguageSupport } from "@/store/store";
+import { LanguagesSupported } from "@/store/store";
 import { DocumentData, FirestoreDataConverter, QueryDocumentSnapshot, SnapshotOptions, collection, doc, limit, orderBy, query, where } from "firebase/firestore";
 
 export interface User {
@@ -15,7 +15,7 @@ export interface Message {
     timestamp: Date;
     user: User;
     translated?: {
-        [K in LanguageSupport]?: string
+        [K in LanguagesSupported]?: string
     }
 }
 
