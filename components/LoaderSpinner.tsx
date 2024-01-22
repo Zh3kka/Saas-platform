@@ -1,5 +1,5 @@
 import React from 'react'
-import { BounceLoader } from 'react-spinners'
+import { ClipLoader } from 'react-spinners'
 
 function LoaderSpinner() {
   return (
@@ -11,7 +11,7 @@ function LoaderSpinner() {
         height: '100vh',
       }}
     >
-      <BounceLoader color="#ff0000" size={80} />
+      <ClipLoader color="#d4d4d4" size={80} />
     </div>
   )
 }

@@ -36,7 +36,7 @@ function ChatListRow({ chatId }: { chatId: string }) {
             [message?.user.name || session?.user.name].toString().split(' ')[0]}
         </p>
         <p className="text-gray-400 text-left">
-          {message?.translated?.[language] || 'Get started chat'}
+          {message?.translated?.[language] || 'Get the conversation yet...'}
         </p>
       </div>
       <div className="text-xs text-gray-400 text-right">

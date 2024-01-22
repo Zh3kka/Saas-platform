@@ -8,7 +8,6 @@ import { useSession } from 'next-auth/react'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import CreateChatButton from './CreateChatButton'
 import ChatListRow from './ChatListRow'
-import { Skeleton } from './ui/skeleton'
 
 function ChatListRows({ initialChats }: { initialChats: ChatMembers[] }) {
   const { data: session } = useSession()

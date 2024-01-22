@@ -10,7 +10,7 @@ type Props = {
 function ChatsPage({ searchParams: { error } }: Props) {
   return (
     <div>
-      <h1>Chats</h1>
+      <h1 className="text-center text-2xl font-bold">Your chats</h1>
 
       <ChatList />
     </div>
