@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import ScreenshotImage from '@/images/AmI.jpg'
+import ScreenshotImage from '@/images/BGC.jpg'
 
 export default async function Home() {
   return (

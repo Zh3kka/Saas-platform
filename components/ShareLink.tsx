@@ -64,7 +64,7 @@ function ShareLink({
           <DialogTitle>Share Link</DialogTitle>
           <DialogDescription>
             Any user wgo gas been{' '}
-            <span className="text-indigo-600 font-bold">granted access</span>
+            <span className="text-indigo-600 font-bold">granted access</span>{' '}
             can use this link
           </DialogDescription>
         </DialogHeader>
