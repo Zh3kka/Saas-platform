@@ -8,6 +8,7 @@ import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { User, messagesRef } from '@/lib/converters/Messages'
 import { addDoc, serverTimestamp } from 'firebase/firestore'
+import { useRouter } from 'next/navigation'
 
 const formShema = z.object({
   input: z.string().max(1000),
@@ -15,6 +16,7 @@ const formShema = z.object({
 
 function ChatInput({ chatId }: { chatId: string }) {
   const { data: session } = useSession()
+  const router = useRouter()
   const form = useForm<z.infer<typeof formShema>>({
     resolver: zodResolver(formShema),
     defaultValues: {
@@ -23,7 +25,9 @@ function ChatInput({ chatId }: { chatId: string }) {
   })
 
   function onSubmit(values: z.infer<typeof formShema>) {
-    if (values.input.length === 0) {
+    const inputCopy = values.input.trim()
+    form.reset()
+    if (inputCopy.length === 0) {
       return
     }
     if (!session?.user) {
@@ -38,16 +42,14 @@ function ChatInput({ chatId }: { chatId: string }) {
     }
 
     addDoc(messagesRef(chatId), {
-      input: values.input,
+      input: inputCopy,
       timestamp: serverTimestamp(),
       user: userToStore,
     })
-
-    form.reset()
   }
 
   return (
-    <div className="sticky bottom-0">
+    <div className="fixed bottom-0 left-0 right-0 flex justify-center">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -60,7 +62,7 @@ function ChatInput({ chatId }: { chatId: string }) {
               <FormItem className="flex-1">
                 <FormControl>
                   <Input
-                    className="border-none bg-transparent dark:placeholder:text-white/70"
+                    className="border-none bg-transparent dark:placeholder:text-white/70 active:border-violet-600"
                     placeholder="Type a message..."
                     {...field}
                   />
