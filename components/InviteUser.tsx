@@ -90,8 +90,8 @@ function InviteUser({ chatId }: { chatId: string }) {
       <>
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
-            <Button>
-              <PlusCircleIcon className="mt-1" />
+            <Button className="bg-white">
+              <PlusCircleIcon className="mr-1" />
               Add User to chat
             </Button>
           </DialogTrigger>

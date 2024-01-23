@@ -1,6 +1,6 @@
 'use client'
 
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { useToast } from './ui/use-toast'
 import {
   Dialog,
@@ -13,7 +13,7 @@ import {
   DialogTrigger,
 } from './ui/dialog'
 import { Button } from './ui/button'
-import { Copy } from 'lucide-react'
+import { Check, Copy } from 'lucide-react'
 import { Label } from './ui/label'
 import { Input } from './ui/input'
 
@@ -28,6 +28,7 @@ function ShareLink({
 }) {
   const { toast } = useToast()
   const host = window.location.host
+  const [isCopy, setIsCopy] = useState(false)
   const linkToChat =
     process.env.NODE_ENV === 'development'
       ? `http://${host}/chat/${chatId}`
@@ -35,6 +36,7 @@ function ShareLink({
 
   async function copyToClipboard() {
     try {
+      setIsCopy(true)
       await navigator.clipboard.writeText(linkToChat)
 
       toast({
@@ -82,13 +84,20 @@ function ShareLink({
             className="px-3"
           >
             <span className="sr-only">Copy</span>
-            <Copy className="h-4 w-4" />
-            Copy
+            {!isCopy ? (
+              <Copy className="h-4 w-4" />
+            ) : (
+              <Check className="h-4 w-4" />
+            )}
           </Button>
         </div>
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
-            <Button type="button" variant="secondary">
+            <Button
+              type="button"
+              variant="secondary"
+              className="hover:bg-red-600"
+            >
               Close
             </Button>
           </DialogClose>

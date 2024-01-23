@@ -15,6 +15,14 @@ function ChatListRow({ chatId }: { chatId: string }) {
     limitedSortedMessagesRef(chatId)
   )
 
+  const getLastMessage = () => {
+    if (messages && messages.length > 0) {
+      return messages[messages.length - 1].input
+    } else {
+      return 'No messages yet!'
+    }
+  }
+
   function prettyUUID(n = 4) {
     return chatId.substring(0, n)
   }
@@ -35,12 +43,7 @@ function ChatListRow({ chatId }: { chatId: string }) {
           {message &&
             [message?.user.name || session?.user.name].toString().split(' ')[0]}
         </p>
-        <p className="text-gray-400 text-left">
-          {(messages &&
-            messages.length > 0 &&
-            messages[messages.length - 1]?.input) ||
-            'No messages yet!'}
-        </p>
+        <p className="text-gray-400 text-left">{getLastMessage()}</p>
       </div>
       <div className="text-xs text-gray-400 text-right">
         <p className="mb-auto">

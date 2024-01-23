@@ -57,7 +57,9 @@ function DeleteChatButton({ chatId }: { chatId: string }) {
     session?.user.id === adminId && (
       <Dialog onOpenChange={setOpen} open={open}>
         <DialogTrigger asChild>
-          <Button variant="destructive">Delete Chat</Button>
+          <Button variant="destructive" className="bg-red-600 hover:bg-red-800">
+            Delete Chat
+          </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
@@ -67,7 +69,11 @@ function DeleteChatButton({ chatId }: { chatId: string }) {
             </DialogDescription>
           </DialogHeader>
           <div className="grid grid-cols-2 space-x-2">
-            <Button variant="destructive" onClick={handleDelete}>
+            <Button
+              variant="destructive"
+              onClick={handleDelete}
+              className="bg-red-600 hover:bg-red-800"
+            >
               Delete
             </Button>
             <Button variant="outline" onClick={() => setOpen(false)}>
